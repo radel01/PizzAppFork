@@ -10,10 +10,13 @@ public class PizzApp extends javax.swing.JFrame {
     int extra3= 0;
     int extrak=extra1 + extra2 + extra3;
     String osszegzes;
-    String tipus;
-    String meret;
-    String extra;
-    String darab;
+    String tipus="Típus: Songoku";
+    String meret="Méret: 32cm";
+    String feltet1="";
+    String feltet2="";
+    String feltet3="";
+    
+    String darab="Darabszám: 1";
     
     public PizzApp() {
         initComponents();
@@ -305,46 +308,48 @@ public class PizzApp extends javax.swing.JFrame {
     private void rdbMeret25ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_rdbMeret25ItemStateChanged
         meretSzorzo= .75;
         szamolasEsKiiras();
-        txaOsszesito.setText("Méret: 25cm");
+        meret="Méret: 25cm";
     }//GEN-LAST:event_rdbMeret25ItemStateChanged
 
     private void rdbMeret32ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_rdbMeret32ItemStateChanged
         meretSzorzo= 1;
         szamolasEsKiiras();
-        txaOsszesito.setText("Méret: 32cm");
+        meret="Méret: 32cm";
     }//GEN-LAST:event_rdbMeret32ItemStateChanged
 
     private void chbSajtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chbSajtActionPerformed
 
         if(chbSajt.isSelected()){
             extra1 += 200;
-            txaOsszesito.setText("Extra 1: Sajt");
+            feltet1=" Sajt";
         }else{
             extra1 -= 200;
+            feltet1="";
         }
-        extrak=extra1 + extra2 + extra3;
         szamolasEsKiiras();
     }//GEN-LAST:event_chbSajtActionPerformed
 
     private void chbHagymaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chbHagymaActionPerformed
         if(chbHagyma.isSelected()){
             extra2 += 200;
-            txaOsszesito.setText("Extra 2: Hagyma");
+            feltet2=" Hagyma";
         }else{
             extra2 -= 200;
+            feltet2="";
         }
-        extrak=extra1 + extra2 + extra3;
+        
         szamolasEsKiiras();
     }//GEN-LAST:event_chbHagymaActionPerformed
 
     private void chbAnanaszActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chbAnanaszActionPerformed
         if(chbAnanasz.isSelected()){
             extra3 += 200;
-            txaOsszesito.setText("Extra 3: Ananász");
+            feltet3=" Ananász";
         }else{
             extra3 -= 200;
+            feltet3="";
         }
-        extrak=extra1 + extra2 + extra3;
+        
         szamolasEsKiiras();
     }//GEN-LAST:event_chbAnanaszActionPerformed
 
@@ -352,19 +357,19 @@ public class PizzApp extends javax.swing.JFrame {
         int dbSzam= numDb.getModel().getValue().hashCode();
         if(dbSzam==1){
             db=1;
-            darab="1";
+            darab="Darabszám: 1";
         }else if(dbSzam==2){
             db=2;
-            darab="2";
+            darab="Darabszám: 2";
         }else if(dbSzam==3){
             db=3;
-            darab="3";
+            darab="Darabszám: 3";
         }else if(dbSzam==4){
             db=4;
-            darab="4";
+            darab="Darabszám: 4";
         }else if(dbSzam==5){
             db=5;
-            darab="5";
+            darab="Darabszám: 5";
         }
         szamolasEsKiiras();
 
@@ -375,10 +380,12 @@ public class PizzApp extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRendelMouseClicked
 
     private void osszegzesKiirasa(){
-        osszegzes = tipus + meret + darab + extra;
+        String feltetek="Feltétek: "+ feltet1 + feltet2 + feltet3;
+        osszegzes = tipus +System.lineSeparator()+ meret +System.lineSeparator()+ darab +System.lineSeparator()+feltetek;
         txaOsszesito.setText(osszegzes);
     }
     private void szamolasEsKiiras() {
+        extrak=extra1 + extra2 + extra3;
         vegsoAr = alapAr * meretSzorzo +extrak;
         vegsoAr *= db;
         lblAr.setText(Double.toString(vegsoAr));
