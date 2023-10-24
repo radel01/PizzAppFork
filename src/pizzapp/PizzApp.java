@@ -234,7 +234,33 @@ public class PizzApp extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void cmdValaszthatoPizzakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdValaszthatoPizzakActionPerformed
-        // TODO add your handling code here:
+        int pizzaIndex= cmdValaszthatoPizzak.getSelectedIndex();
+        
+        int alapAr=-1;
+        
+        if(pizzaIndex == 0){
+            alapAr= 1250;
+        }else if(pizzaIndex ==1){
+            alapAr= 1450;
+        }else if(pizzaIndex ==2){
+            alapAr=1750;
+        }else if(pizzaIndex ==3){
+            alapAr=1850;
+        }
+        double meretSzorzo = 1;
+        
+        int db = 1;
+        
+        int extra1= 0;
+        int extra2= 0;
+        int extra3= 0;
+        int extrak = extra1 + extra2 + extra3;
+        
+        double vegsoAr = alapAr * meretSzorzo +extrak;
+        vegsoAr *= db;
+        lblAr.setText(Double.toString(vegsoAr));
+        
+
     }//GEN-LAST:event_cmdValaszthatoPizzakActionPerformed
 
     public static void main(String args[]) {
