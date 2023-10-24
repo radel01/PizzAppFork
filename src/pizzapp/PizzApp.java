@@ -9,6 +9,12 @@ public class PizzApp extends javax.swing.JFrame {
     int extra2= 0;
     int extra3= 0;
     int extrak=extra1 + extra2 + extra3;
+    String osszegzes;
+    String tipus;
+    String meret;
+    String extra;
+    String darab;
+    
     public PizzApp() {
         initComponents();
         alapAr= 1750;
@@ -203,6 +209,11 @@ public class PizzApp extends javax.swing.JFrame {
         jScrollPane1.setViewportView(txaOsszesito);
 
         btnRendel.setText("Megrendelem");
+        btnRendel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnRendelMouseClicked(evt);
+            }
+        });
 
         lblOsszesito.setText("Összestő:");
 
@@ -273,17 +284,20 @@ public class PizzApp extends javax.swing.JFrame {
         
         if(pizzaIndex == 0){
             alapAr= 1250;
+            tipus="Pizza: Margaritha";
         }else if(pizzaIndex ==1){
             alapAr= 1450;
+            tipus="Pizza: Hawaii";
         }else if(pizzaIndex ==2){
             alapAr=1750;
+            tipus="Pizza: Songoku";
         }else if(pizzaIndex ==3){
             alapAr=1850;
+            tipus="Pizza: Diavola";
         }
         
         
         szamolasEsKiiras();
-        
 
     }//GEN-LAST:event_cmdValaszthatoPizzakActionPerformed
 
@@ -291,17 +305,20 @@ public class PizzApp extends javax.swing.JFrame {
     private void rdbMeret25ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_rdbMeret25ItemStateChanged
         meretSzorzo= .75;
         szamolasEsKiiras();
+        txaOsszesito.setText("Méret: 25cm");
     }//GEN-LAST:event_rdbMeret25ItemStateChanged
 
     private void rdbMeret32ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_rdbMeret32ItemStateChanged
         meretSzorzo= 1;
         szamolasEsKiiras();
+        txaOsszesito.setText("Méret: 32cm");
     }//GEN-LAST:event_rdbMeret32ItemStateChanged
 
     private void chbSajtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chbSajtActionPerformed
 
         if(chbSajt.isSelected()){
             extra1 += 200;
+            txaOsszesito.setText("Extra 1: Sajt");
         }else{
             extra1 -= 200;
         }
@@ -312,6 +329,7 @@ public class PizzApp extends javax.swing.JFrame {
     private void chbHagymaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chbHagymaActionPerformed
         if(chbHagyma.isSelected()){
             extra2 += 200;
+            txaOsszesito.setText("Extra 2: Hagyma");
         }else{
             extra2 -= 200;
         }
@@ -322,6 +340,7 @@ public class PizzApp extends javax.swing.JFrame {
     private void chbAnanaszActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chbAnanaszActionPerformed
         if(chbAnanasz.isSelected()){
             extra3 += 200;
+            txaOsszesito.setText("Extra 3: Ananász");
         }else{
             extra3 -= 200;
         }
@@ -333,18 +352,32 @@ public class PizzApp extends javax.swing.JFrame {
         int dbSzam= numDb.getModel().getValue().hashCode();
         if(dbSzam==1){
             db=1;
+            darab="1";
         }else if(dbSzam==2){
             db=2;
+            darab="2";
         }else if(dbSzam==3){
             db=3;
+            darab="3";
         }else if(dbSzam==4){
             db=4;
+            darab="4";
         }else if(dbSzam==5){
             db=5;
+            darab="5";
         }
         szamolasEsKiiras();
+
     }//GEN-LAST:event_numDbStateChanged
 
+    private void btnRendelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRendelMouseClicked
+        osszegzesKiirasa();
+    }//GEN-LAST:event_btnRendelMouseClicked
+
+    private void osszegzesKiirasa(){
+        osszegzes = tipus + meret + darab + extra;
+        txaOsszesito.setText(osszegzes);
+    }
     private void szamolasEsKiiras() {
         vegsoAr = alapAr * meretSzorzo +extrak;
         vegsoAr *= db;
