@@ -10,27 +10,22 @@ public class PizzApp extends javax.swing.JFrame {
     int extra3= 0;
     int extrak=extra1 + extra2 + extra3;
     String osszegzes;
-    String tipus="Típus: Songoku";
-    String meret="Méret: 32cm";
+    String tipus="A választott pizza: Songoku";
+    String meret="Mérete: 32cm";
     String feltet1="";
     String feltet2="";
     String feltet3="";
-    
-    String darab="Darabszám: 1";
+    String darab=" (1db)";
     
     public PizzApp() {
         initComponents();
         alapAr= 1750;
-        
-         meretSzorzo = 1;
-        
-         db = 1;
-        
+        meretSzorzo = 1;
+        db = 1;
         extra1= 0;
         extra2= 0;
         extra3= 0;
         extrak = extra1 + extra2 + extra3;
-        
         szamolasEsKiiras();
     }
 
@@ -287,16 +282,16 @@ public class PizzApp extends javax.swing.JFrame {
         
         if(pizzaIndex == 0){
             alapAr= 1250;
-            tipus="Pizza: Margaritha";
+            tipus="A választott pizza: Margherita";
         }else if(pizzaIndex ==1){
             alapAr= 1450;
-            tipus="Pizza: Hawaii";
+            tipus="A választott pizza: Hawaii";
         }else if(pizzaIndex ==2){
             alapAr=1750;
-            tipus="Pizza: Songoku";
+            tipus="A választott pizza: Songoku";
         }else if(pizzaIndex ==3){
             alapAr=1850;
-            tipus="Pizza: Diavola";
+            tipus="A választott pizza: Diavola";
         }
         
         
@@ -308,20 +303,20 @@ public class PizzApp extends javax.swing.JFrame {
     private void rdbMeret25ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_rdbMeret25ItemStateChanged
         meretSzorzo= .75;
         szamolasEsKiiras();
-        meret="Méret: 25cm";
+        meret="Mérete: 25cm";
     }//GEN-LAST:event_rdbMeret25ItemStateChanged
 
     private void rdbMeret32ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_rdbMeret32ItemStateChanged
         meretSzorzo= 1;
         szamolasEsKiiras();
-        meret="Méret: 32cm";
+        meret="Mérete: 32cm";
     }//GEN-LAST:event_rdbMeret32ItemStateChanged
 
     private void chbSajtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chbSajtActionPerformed
 
         if(chbSajt.isSelected()){
             extra1 += 200;
-            feltet1=" Sajt";
+            feltet1="- Sajt"+System.lineSeparator();
         }else{
             extra1 -= 200;
             feltet1="";
@@ -332,7 +327,7 @@ public class PizzApp extends javax.swing.JFrame {
     private void chbHagymaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chbHagymaActionPerformed
         if(chbHagyma.isSelected()){
             extra2 += 200;
-            feltet2=" Hagyma";
+            feltet2="- Hagyma"+System.lineSeparator();
         }else{
             extra2 -= 200;
             feltet2="";
@@ -344,7 +339,7 @@ public class PizzApp extends javax.swing.JFrame {
     private void chbAnanaszActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chbAnanaszActionPerformed
         if(chbAnanasz.isSelected()){
             extra3 += 200;
-            feltet3=" Ananász";
+            feltet3="- Ananász"+System.lineSeparator();
         }else{
             extra3 -= 200;
             feltet3="";
@@ -357,19 +352,19 @@ public class PizzApp extends javax.swing.JFrame {
         int dbSzam= numDb.getModel().getValue().hashCode();
         if(dbSzam==1){
             db=1;
-            darab="Darabszám: 1";
+            darab=" (1 db)";
         }else if(dbSzam==2){
             db=2;
-            darab="Darabszám: 2";
+            darab=" (2 db)";
         }else if(dbSzam==3){
             db=3;
-            darab="Darabszám: 3";
+            darab=" (3 db)";
         }else if(dbSzam==4){
             db=4;
-            darab="Darabszám: 4";
+            darab=" (4 db)";
         }else if(dbSzam==5){
             db=5;
-            darab="Darabszám: 5";
+            darab=" (5 db)";
         }
         szamolasEsKiiras();
 
@@ -380,8 +375,8 @@ public class PizzApp extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRendelMouseClicked
 
     private void osszegzesKiirasa(){
-        String feltetek="Feltétek: "+ feltet1 + feltet2 + feltet3;
-        osszegzes = tipus +System.lineSeparator()+ meret +System.lineSeparator()+ darab +System.lineSeparator()+feltetek;
+        String feltetek="Feltétek: "+System.lineSeparator()+feltet1 + feltet2 + feltet3;
+        osszegzes = tipus + darab +System.lineSeparator()+ meret +System.lineSeparator()+feltetek;
         txaOsszesito.setText(osszegzes);
     }
     private void szamolasEsKiiras() {
